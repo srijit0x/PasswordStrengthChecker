@@ -1,0 +1,13 @@
+{
+  "name": "passwordstrengthchecker",
+  "version": "1.0.0",
+  "description": "A web application for checking password strength",
+  "main": "app.js",
+  "scripts": {
+    "start": "live-server --open=./index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
