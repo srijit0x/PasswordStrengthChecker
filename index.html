@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="password-input-section">
+        <label for="passwordInput">Enter your password:</label>
+        <input type="password" id="passwordInput" name="password">
+        <button onclick="checkPasswordStrength()">Check Strength</button>
+    </div>
+    <div id="passwordStrengthDisplay"></div>
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById("passwordInput").value;
+            document.getElementById("passwordStrengthDisplay").innerHTML = "Strength: Placeholder";
+        }
+    </script>
+</body>
+</html>
