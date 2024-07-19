@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
 
 const PasswordStrengthChecker = () => {
-    const [password, setPassword] = useState('');
+    const [inputPassword, setInputPassword] = useState('');
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+    const handleInputPasswordChange = (event) => {
+        setInputPassword(event.target.value);
     };
 
-    const submitPassword = (event) => {
+    const handlePasswordStrengthCheck = (event) => {
         event.preventDefault();
-        const apiUrl = process.env.REACT_APP_PASSWORD_API_URL;
+        const passwordStrengthApiUrl = process.env.REACT_APP_PASSWORD_API_URL;
 
-        fetch(apiUrl, {
+        fetch(passwordStrengthApiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ password }),
+            body: JSON.stringify({ password: inputPassword }),
         })
         .then(response => response.json())
         .then(data => {
             alert(`Password strength: ${data.strength}`);
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Password Strength Check Error:', error);
         });
     };
 
     return (
-        <form onSubmit={submitPassword}>
-            <label htmlFor="password">Password:</label>
+        <form onSubmit={handlePasswordStrengthCheck}>
+            <label htmlFor="passwordInput">Password:</label>
             <input
                 type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
+                id="passwordInput"
+                name="passwordInput"
+                value={inputPassword}
+                onChange={handleInputPasswordChange}
             />
             <button type="submit">Check Password Strength</button>
         </form>
