@@ -1,19 +1,32 @@
+function isLengthSufficient(password) {
+  return password.length >= 8;
+}
+
+function includesDigits(password) {
+  return /\d/.test(password);
+}
+
+function includesMixedCaseLetters(password) {
+  return /[a-z]/.test(password) && /[A-Z]/.test(password);
+}
+
+function includesSpecialCharacters(password) {
+  return /[^A-Za-z0-9]/.test(password);
+}
+
 function calculatePasswordStrength(password) {
   let strength = 0;
   
-  if (password.length >= 8) {
+  if (isLengthSufficient(password)) {
     strength += 1;
   }
-
-  if (/\d/.test(password)) {
+  if (includesDigits(password)) {
     strength += 1;
   }
-
-  if (/[a-z]/.test(password) && /[A-Z]/.test(password)) {
+  if (includesMixedCaseLetters(password)) {
     strength += 1;
   }
-
-  if (/[^A-Za-z0-9]/.test(password)) {
+  if (includesSpecialCharacters(password)) {
     strength += 1;
   }
   
